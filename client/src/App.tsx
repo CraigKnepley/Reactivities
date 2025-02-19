@@ -1,10 +1,5 @@
 import { useEffect, useState } from "react";
 
-// Define the Activity type for TypeScript
-interface Activity {
-  id: number;
-  title: string;
-}
 
 function App() {
   const [activities, setActivities] = useState<Activity[]>([]);
