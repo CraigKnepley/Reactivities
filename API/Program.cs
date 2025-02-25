@@ -17,6 +17,7 @@ builder.Services.AddDbContext<DataContext>(opt =>
 builder.Services.AddCors();
 builder.Services.AddMediatR(x => x.RegisterServicesFromAssemblyContaining<GetActivityList.Handler>());
 
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
