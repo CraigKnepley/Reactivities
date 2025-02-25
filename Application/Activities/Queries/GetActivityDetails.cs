@@ -8,7 +8,7 @@ namespace Application.Activities.Queries
     {
         public class Query : IRequest<Activity>
         {
-            public required string Id { get; set; }
+            public required Guid Id { get; set; }
         }
 
         public class Handler(DataContext context) : IRequestHandler<Query, Activity>

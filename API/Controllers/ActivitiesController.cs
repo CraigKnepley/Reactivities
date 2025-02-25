@@ -27,7 +27,7 @@ namespace API.Controllers
         [HttpGet("{id}")] //api/activities/fdkfdffdfd
         public async Task<ActionResult<Activity>> GetActivity(Guid id)
         {
-            return await _mediator.Send(new GetActivityDetails.Query{Id = id.ToString() });
+            return await _mediator.Send(new GetActivityDetails.Query{Id = id });
         }
     }    
 }
