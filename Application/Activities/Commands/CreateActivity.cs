@@ -1,3 +1,4 @@
+using System;
 using Domain;
 using MediatR;
 using Persistence;
@@ -6,23 +7,18 @@ namespace Application.Activities.Commands;
 
     public class CreateActivity
     {
-        public class Command : IRequest<Guid>
+        public class Command : IRequest<String>
         {
             public required Activity Activity { get; set; }
         }
 
-        public class Handler : IRequestHandler<Command, Guid>
+        public class Handler(DataContext context) : IRequestHandler<Command, string>
         {
-            private readonly DataContext _context; 
-            public Handler(DataContext context)
+            public async Task<string> Handle(Command request, CancellationToken cancellationToken)
             {
-                _context = context;
-            }
-            public async Task<Guid> Handle(Command request, CancellationToken cancellationToken)
-            {
-                _context.Activities.Add(request.Activity);
+                context.Activities.Add(request.Activity);
 
-                await _context.SaveChangesAsync(cancellationToken);
+                await context.SaveChangesAsync(cancellationToken);
 
                 return request.Activity.Id;
             }

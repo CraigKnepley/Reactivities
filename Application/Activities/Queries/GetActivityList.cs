@@ -1,10 +1,12 @@
+using System;
 using Domain;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
 using Persistence;
 
-namespace Application.Activities.Queries
-{
+namespace Application.Activities.Queries;
+
     public class GetActivityList
     {
         public class Query : IRequest<List<Activity>> {}
@@ -17,4 +19,3 @@ namespace Application.Activities.Queries
             }
         }
     }
-}
