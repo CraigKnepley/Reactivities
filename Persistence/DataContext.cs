@@ -1,17 +1,11 @@
-#nullable disable
-
+using System;
 using Domain;
 using Microsoft.EntityFrameworkCore;
 
 
-namespace Persistence
-{
-    public class DataContext : DbContext
-    {
-        public DataContext(DbContextOptions options) : base(options)
-        {
-        }
+namespace Persistence;
 
-        public DbSet<Activity> Activities { get; set; }
-    }
-}
+        public class DataContext(DbContextOptions options) : DbContext(options)
+        {
+            public required DbSet<Activity> Activities { get; set; }
+        }
