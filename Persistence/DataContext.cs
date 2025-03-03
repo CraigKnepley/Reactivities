@@ -3,9 +3,10 @@ using Domain;
 using Microsoft.EntityFrameworkCore;
 
 
-namespace Persistence;
-
-        public class DataContext(DbContextOptions options) : DbContext(options)
+namespace Persistence
+{
+        public class DataContext(DbContextOptions<DataContext> options) : DbContext(options)
         {
-            public required DbSet<Activity> Activities { get; set; }
+        public DbSet<Activity> Activities { get; set; }
         }
+}
